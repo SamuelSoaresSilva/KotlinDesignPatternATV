@@ -1,4 +1,4 @@
-package org.example.com.samuelsoares.sanduicheira
+package org.example.com.samuelsoares.componentes
 
 open class Sanduiche {
 
@@ -6,7 +6,7 @@ open class Sanduiche {
 
     open fun fazer(): String {
 
-        return pao + pao
+        return pao
     }
 }
 
