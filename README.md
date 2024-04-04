@@ -1,52 +1,57 @@
 # Final code idea:
 
-## package componentes
+## com.samuelsoares.componentes
 ```
 open class Sanduiche {
+
+    open val pao: String = "Pão"
+
     open fun fazer(): String {
-        return "Pão"
+
+        return pao
     }
 }
 ```
 ```
 class SanduicheSimples : Sanduiche()
 ```
-## package decorators
+## com.samuelsoares.decorators
 ```
 import componentes.Sanduiche
 
-open class SanduicheDecorator(private val sanduiche: Sanduiche) : Sanduiche() {
+class SanduicheDecorator(private val sanduiche: Sanduiche): Sanduiche() {
+
     override fun fazer(): String {
-        return sanduiche.fazer()
+        return super.fazer()
     }
+
 }
 ```
 ```
-class QueijoDecorator(sanduiche: Sanduiche) : SanduicheDecorator(sanduiche) {
-
-    override fun fazer(): String {
-        return super.fazer() + " + Queijo"
-        
-    }
-}
-```
-```
-class PresuntoDecorator(sanduiche: Sanduiche) : SanduicheDecorator(sanduiche) {
-
-    override fun fazer(): String {
-        return super.fazer() + " + Presunto"
-    }
+class QueijoDecorator(sanduiche: Sanduiche): SanduicheDecorator(sanduiche) {
     
+    val recheio: String = "Queijo"
+    override fun fazer(): String {
+        return super.fazer()+ " + " + recheio
+    }
 }
 ```
-## package main
+```
+class PresuntoDecorator(sanduiche: Sanduiche): SanduicheDecorator(sanduiche) {
+
+    private val recheio: String = "Presunto"
+    override fun fazer(): String {
+        return super.fazer()+" + "+ recheio
+    }
+}
+```
+## src.main.kotlin
 ```
 import componentes.SanduicheSimples
 import decorators.QueijoDecorator
 import decorators.PresuntoDecorator
 
 fun main() {
-
     var sanduiche: Sanduiche = SanduicheSimples()
     println(sanduiche.fazer())
 
@@ -55,5 +60,11 @@ fun main() {
 
     sanduiche = PresuntoDecorator(sanduiche)
     println(sanduiche.fazer())
-  }
+}
 ```  
+## Console:
+```  
+Pão
+Pão + Queijo
+Pão + Presunto
+```

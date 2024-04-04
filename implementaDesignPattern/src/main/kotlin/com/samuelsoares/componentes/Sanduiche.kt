@@ -1,5 +1,8 @@
 package org.example.com.samuelsoares.componentes
 
+/********************
+ * interface básica *
+ ********************/
 open class Sanduiche {
 
     open val pao: String = "Pão"

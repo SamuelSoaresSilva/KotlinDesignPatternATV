@@ -2,6 +2,9 @@ package org.example.com.samuelsoares.decorators
 
 import org.example.com.samuelsoares.componentes.Sanduiche
 
+/*******************
+ *    Decorator    *
+ *******************/
 class PresuntoDecorator(sanduiche: Sanduiche): SanduicheDecorator(sanduiche) {
 
     private val recheio: String = "Presunto"
